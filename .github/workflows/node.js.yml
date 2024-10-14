@@ -1,0 +1,46 @@
+name: Automation API CI/CD
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types:
+      - closed
+  push:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [22.x]
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - name: Make Env File
+      uses: SpicyPizza/create-envfile@v1.3
+      with:
+        BASE_URL: ${{ secrets.BASE_URL }}
+        API_KEY: ${{ secrets.API_KEY }}
+        MATTERMOST_WEBHOOK: ${{ secrets.MATTERMOST_WEBHOOK }}
+        file_name: .env
+    - name: Install Dependencies
+      run: npm i
+    - name: API Test
+      continue-on-error: true
+      run: npm run test
+    - name: Notify Test Summary
+      continue-on-error: true
+      run: npm run notify
+    - name: Archive Reports
+      uses: actions/upload-artifact@v3
+      with:
+        name: mochawesome
+        path: /home/runner/work/Catalyst2024/catalyst-automation-api/reports/mochawesome/
