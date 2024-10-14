@@ -40,4 +40,4 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: mochawesome
-        path: /home/runner/work/automation-api-mocha-ci/reports/mochawesome/
+        path: /home/runner/work/automation-api-mocha-ci/automation-api-mocha-ci/reports/mochawesome/
