@@ -1,0 +1,68 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "required": [
+        "meta",
+        "data"
+    ],
+    "properties": {
+        "meta": {
+            "type": "object",
+            "required": [
+                "pagination"
+            ],
+            "properties": {
+                "pagination": {
+                    "type": "object",
+                    "required": [
+                        "total",
+                        "pages",
+                        "page",
+                        "limit",
+                        "links"
+                    ],
+                    "properties": {
+                        "total": {
+                            "type": "integer"
+                        },
+                        "pages": {
+                            "type": "integer"
+                        },
+                        "page": {
+                            "type": "integer"
+                        },
+                        "limit": {
+                            "type": "integer"
+                        },
+                        "links": {
+                            "type": "object",
+                            "required": [
+                                "previous",
+                                "current",
+                                "next"
+                            ],
+                            "properties": {
+                                "previous": {
+                                    "type": "null"
+                                },
+                                "current": {
+                                    "type": "string"
+                                },
+                                "next": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "data": {
+            "type": "array"
+        }
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "createUser": {
+        "name": "",
+        "gender": "female",
+        "email": "",
+        "status": "active"
+    },
+    "updateUser": {
+        "name": "",
+        "gender": "male",
+        "email": "",
+        "status": "active"
+    },
+    "createPost": {
+        "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "body": "In sagittis semper accumsan. Sed rhoncus viverra tortor ut hendrerit. Cras et enim quis magna consectetur luctus."
+    },
+    "createComment": {
+        "name": "",
+        "email": "",
+        "body": ""
+    },
+    "createTodo": {
+        "title": "User's Todo",
+        "due_on": "2025-12-31T00:00:00.000+05:30",
+        "status": "pending"
+    }
+}

@@ -1,0 +1,75 @@
+{
+    "postCreateUser": {
+        "description": "Create new account in gorest.co.in",
+        "positive": {
+            "validData": "As a New User, I can create my account in gorest.co.in"
+        },
+        "negative": {
+            "invalidData": "As a New User, I cannot create my account in gorest.co.in using invalid data",
+            "invalidToken": "As a New User, I cannot create my account in gorest.co.in with invalid Authentication",
+            "emptyToken": "As a New User, I cannot create my account in gorest.co.in with empty Authentication"
+        }
+    },
+    "patchUpdateUser": {
+        "description": "Update account metadata in gorest.co.in",
+        "positive": {
+            "validData": "As a User, I can update my account in gorest.co.in"
+        },
+        "negative": {
+            "invalidData": "As a User, I cannot update my account in gorest.co.in using invalid data",
+            "invalidToken": "As a User, I cannot update my account in gorest.co.in with invalid Authentication",
+            "emptyToken": "As a User, I cannot update my account in gorest.co.in with empty Authentication"
+        }
+    },
+    "postCreateUserPost": {
+        "description": "Create a Post in gorest.co.in",
+        "positive": {
+            "validData": "As a User, I can create a post in gorest.co.in"
+        },
+        "negative": {
+            "invalidData": "As a User, I cannot create a post in gorest.co.in using invalid data",
+            "invalidToken": "As a User, I cannot create a post in gorest.co.in with invalid Authentication",
+            "emptyToken": "As a User, I cannot create a post in gorest.co.in with empty Authentication"
+        }
+    },
+    "postCreatePostComment": {
+        "description": "Comment in a Post that created in gorest.co.in",
+        "positive": {
+            "validData": "As a User, I can comment for a post in gorest.co.in"
+        },
+        "negative": {
+            "invalidData": "As a User, I cannot comment for a post in gorest.co.in using invalid data",
+            "invalidToken": "As a User, I cannot comment for a post in gorest.co.in with invalid Authentication",
+            "emptyToken": "As a User, I cannot comment for a post in gorest.co.in with empty Authentication"
+        }
+    },
+    "postCreateUserTodo": {
+        "description": "Create Todo List in gorest.co.in",
+        "positive": {
+            "validData": "As a User, I can create todo list for myself in gorest.co.in"
+        },
+        "negative": {
+            "invalidData": "As a User, I cannot create todo list for myself using invalid data",
+            "invalidToken": "As a User, I cannot create todo list for myself with invalid Authentication",
+            "emptyToken": "As a User, I cannot create todo list for myself with empty Authentication"
+        }
+    },
+    "getUserPost": {
+        "description": "GET Posts that created in gorest.co.in",
+        "positive": {
+            "validData": "As a User, I can get posts that i've create in gorest.co.in"
+        }
+    },
+    "getPostComment": {
+        "description": "GET Comments for Post in gorest.co.in",
+        "positive": {
+            "validData": "As a User, I can get comments in a post created in gorest.co.in"
+        }
+    },
+    "getUserTodo": {
+        "description": "GET created Todo list in gorest.co.in",
+        "positive": {
+            "validData": "As a User, I can get todo list created by user in gorest.co.in"
+        }
+    }
+}
