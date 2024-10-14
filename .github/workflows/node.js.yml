@@ -10,9 +10,7 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [22.x]
@@ -27,7 +25,6 @@ jobs:
     - name: Install Dependencies
       run: npm i
     - name: API Test
-      continue-on-error: true
       env:
         BASE_URL: ${{ secrets.BASE_URL }}
         API_KEY: ${{ secrets.API_KEY }}
@@ -39,5 +36,5 @@ jobs:
     - name: Archive Reports
       uses: actions/upload-artifact@v4
       with:
-        name: mochawesome
+        name: automation-api-report
         path: /home/runner/work/automation-api-mocha-ci/automation-api-mocha-ci/reports/mochawesome/
