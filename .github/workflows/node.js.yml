@@ -6,11 +6,15 @@ on:
     types:
       - closed
   push:
-    branches: [ "master" ]
+    branches:
+      - master
+      - development
 
 jobs:
-  build:
+  build-production:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'  # Run for 'master' branch
+
     strategy:
       matrix:
         node-version: [22.x]
@@ -24,7 +28,7 @@ jobs:
         cache: 'npm'
     - name: Install Dependencies
       run: npm i
-    - name: API Test
+    - name: API Production Test Run
       env:
         BASE_URL: ${{ secrets.BASE_URL }}
         API_KEY: ${{ secrets.API_KEY }}
@@ -36,5 +40,37 @@ jobs:
     - name: Archive Reports
       uses: actions/upload-artifact@v4
       with:
-        name: automation-api-report
+        name: automation-api-report-prd
+        path: /home/runner/work/automation-api-mocha-ci/automation-api-mocha-ci/reports/mochawesome/
+
+  build-development:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/development'  # Run for 'development' branch
+
+    strategy:
+      matrix:
+        node-version: [22.x]
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - name: Install Dependencies
+      run: npm i
+    - name: API Development Test Run
+      env:
+        BASE_URL: ${{ secrets.BASE_URL }}
+        API_KEY: ${{ secrets.API_KEY }}
+      run: npm run test
+    - name: Notify Test Summary
+      env:
+        MATTERMOST_WEBHOOK: ${{ secrets.MATTERMOST_WEBHOOK }}
+      run: npm run notify
+    - name: Archive Reports
+      uses: actions/upload-artifact@v4
+      with:
+        name: automation-api-report-dev
         path: /home/runner/work/automation-api-mocha-ci/automation-api-mocha-ci/reports/mochawesome/
